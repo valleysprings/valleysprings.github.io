@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://valleysprings.github.io</id>
     <title>我真棒</title>
-    <updated>2021-08-12T02:39:25.613Z</updated>
+    <updated>2021-08-12T02:44:13.206Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://valleysprings.github.io"/>
     <link rel="self" href="https://valleysprings.github.io/atom.xml"/>
@@ -16,7 +16,12 @@
         <link href="https://valleysprings.github.io/post/shu-xue-ji-chu-mu-lu/">
         </link>
         <updated>2021-08-12T02:33:39.000Z</updated>
-        <content type="html"><![CDATA[<p>可能之后会更新一段时间的数学基础，目录会不定期更新。</p>
-]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[关于]]></title>
+        <id>https://valleysprings.github.io/post/about/</id>
+        <link href="https://valleysprings.github.io/post/about/">
+        </link>
+        <updated>2019-01-25T11:09:48.000Z</updated>
     </entry>
 </feed>
