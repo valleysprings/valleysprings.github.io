@@ -10,7 +10,7 @@ redirect_from:
 
 # About me
 
-I am now a senior-year data scientist student with a passion for using data to solve complex problems. Throughout my undergraduate studies, I have maintained a strong academic record, with overall GPA of 3.77 (89.82/100). I have also participated in two university-level innovation and entrepreneurship activities, including an AI-driven automated time manager and a data mining and system optimization platform based on eye-tracking data collection. 
+As a senior-year data-science student at ECNU, I am currently preparing to further my studies at SJTU later this year. Throughout my undergraduate studies, I have maintained a strong academic record, with overall GPA of 3.77 (89.82/100). I have also participated in two university-level innovation and entrepreneurship activities, including an AI-driven automated time manager and a data mining and system optimization platform based on eye-tracking data collection. 
 
 ## Undergraduate studies
 
