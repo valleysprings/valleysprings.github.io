@@ -16,7 +16,7 @@ Education
 * B.S. in Data science and big data technology, East China Normal University, 2023
 * M.S. in Management science and engineering, Shanghai Jiaotong University, 2026 (expected)
 
-Work experience
+Internship
 ======
 * Summer 2022: Research Assistant (speech) | CloudWalk Technology Co., Ltd. 
   * TTS front-end model optimization (mostly oriented to SOTA deep NLP models).
@@ -27,10 +27,12 @@ Work experience
 Skills
 ======
 * Programming: Python, C++, Java
-* Data-oriented skills
-  * Data analysis: Pandas, Numpy, Matplotlib, SQL
+* Data-oriented skills:
+  * Data analysis: Pandas, Numpy, Matplotlib, Seaborn
   * Machine learning: scikit-learn, PyTorch, Transformers 
-* utils: Git, Docker, \latex
+  * Database: PostgreSQL, MySQL, MongoDB
+  * Large-scale Data Processing: Spark, Flink
+* Utils: Git, Docker
 
 <!-- 
 Publications
