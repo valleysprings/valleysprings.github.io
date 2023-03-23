@@ -13,26 +13,26 @@ redirect_from:
 
 Education
 ======
-* B.S. in Data science and big data technology, East China Normal University, 2023
-* M.S. in Management science and engineering, Shanghai Jiaotong University, 2026 (expected)
+* Bachelor: Data science and big data technology, **East China Normal University**, 2023
+* Master:   Management science and engineering,   **Shanghai Jiaotong University**, 2026 (expected)
 
 Internship
 ======
-* Summer 2022: Research Assistant (speech) | CloudWalk Technology Co., Ltd. 
+* Summer 2022: Research Assistant (Speech) | CloudWalk Technology Co., Ltd. 
   * TTS front-end model optimization (mostly oriented to SOTA deep NLP models).
 
-* Spring 2023: HFT platform development Assistant | China Securities Co., Ltd. 
-  * Optimizing on-site derivative trading system, as well as researching and tracking cutting-edge technologies for high-capacity, low-latency securities trading systems.
+* Spring 2023: HFT Platform Development assistant | China Securities Co., Ltd. 
+  * Optimizing trading system on-site, as well as researching and tracking cutting-edge technologies for high-capacity, low-latency trading systems.
   
 Skills
 ======
-* Programming: Python, C++, Java
-* Data-oriented skills:
-  * Data analysis: Pandas, Numpy, Matplotlib, Seaborn
-  * Machine learning: scikit-learn, PyTorch, Transformers 
-  * Database: PostgreSQL, MySQL, MongoDB
-  * Large-scale Data Processing: Spark, Flink
-* Utils: Git, Docker
+* **Programming**: Python, C++, Java
+* **Data-oriented skills**:
+  * **Data analysis**: Pandas, Numpy, Matplotlib, Seaborn
+  * **Machine learning**: scikit-learn, PyTorch, Transformers 
+  * **Database**: PostgreSQL, MySQL, MongoDB
+  * **Large-scale Data Processing**: Spark, Flink
+* **Utils**: Git, Docker
 
 <!-- 
 Publications
