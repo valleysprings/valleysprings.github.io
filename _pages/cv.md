@@ -18,15 +18,11 @@ Education
 
 Work experience
 ======
-* Summer 2022: Research Assistant | 
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* Summer 2022: Research Assistant (speech) | CloudWalk Technology Co., Ltd. 
+  * TTS front-end model optimization (mostly oriented to SOTA deep NLP models).
 
-* Spring 2023: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+* Spring 2023: HFT platform development Assistant | China Securities Co., Ltd. 
+  * Optimizing on-site derivative trading system, as well as researching and tracking cutting-edge technologies for high-capacity, low-latency securities trading systems.
   
 Skills
 ======
