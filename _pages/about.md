@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "academicpages is a ready-to-fork GitHub Pages template for academic personal websites"
+title: "HOLA, nice to meet you, my friend!"
 excerpt: "About me"
 author_profile: true
 redirect_from: 
@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-I am a senior year data scientist student with a passion for using data to solve complex problems. Throughout my undergraduate studies, I have maintained a strong academic record, with a current overall GPA of 3.77 and a major GPA of 3.82. I have also participated in two university-level innovation and entrepreneurship activities, including an AI-driven automated time manager and a data mining and system optimization platform based on eye-tracking data collection. In addition, I have a strong command of the English language, with a TOEFL score of 103 (2020) and a CET-6 score of 627 (2021).
+I am a senior year data scientist student with a passion for using data to solve complex problems. Throughout my undergraduate studies, I have maintained a strong academic record, with GPA of 3.77. I have also participated in two university-level innovation and entrepreneurship activities, including an AI-driven automated time manager and a data mining and system optimization platform based on eye-tracking data collection. 
 
 My coursework has covered computer science, applied mathematics, and information systems, allowing me to integrate knowledge from different fields and develop a broad perspective on data science applications. I have developed a strong foundation in mathematics and programming in years of studies. My research interests lies in machine learning (especially deep learning) theory and its engineering implementation. These experiences have equipped me with the knowledge and skills necessary to develop innovative projects and think critically about real-life puzzles.
 
