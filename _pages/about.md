@@ -18,7 +18,7 @@ My coursework has covered computer science, applied mathematics, and information
 
 ## Activities
 
-Beyond my academic studies, I have also engaged in various extracurricular activities. For example, I have completed a summer internship at Yuncong Technology in 2022, where I was responsible for optimizing the front-end of a speech synthesis system. During this process, I learned how to evaluate acoustic and general deep learning models in industry, how to conduct A/B test, and how to iterate SOTA model to better fit in industry. 
+Beyond my academic studies, I have also engaged in various extracurricular activities. For example, I have completed a summer internship at Yuncong Technology in 2022, where I was responsible for optimizing the front-end of a speech synthesis system.
 
 I have also organized courses-sharing seminars in my junior year where many students' studying processes were hindered from COVID-19. With series of collaborations, this project have helped to improve the efficiency of our course learning and fostered a collaborative learning environment. 
 
