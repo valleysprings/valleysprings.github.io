@@ -168,7 +168,7 @@ li {
 }
 
 .news-container {
-  max-height: 8.6rem;
+  max-height: none;
   overflow-y: visible;
   padding-right: 0.5rem;
 }
@@ -408,8 +408,8 @@ footer {
   }
 
   body {
-    width: 100vw;
-    max-width: 100vw;
+    width: auto;
+    max-width: none;
     padding: 1rem;
   }
 
@@ -450,6 +450,14 @@ footer {
     flex-wrap: wrap;
     overflow-x: visible;
     padding-bottom: 0.2rem;
+  }
+
+  .news-list {
+    padding-left: 0;
+  }
+
+  .news-list li {
+    grid-template-columns: 5.4rem minmax(0, 1fr);
   }
 
   .section-row {
