@@ -116,6 +116,7 @@ h1 {
 .page-nav {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
   margin: 0 0 1.1rem;
   padding-bottom: 0.8rem;
@@ -399,6 +400,7 @@ footer {
   border-top: 1px solid var(--border-color);
   color: var(--text-secondary);
   font-size: 0.9rem;
+  text-align: center;
 }
 
 @media (max-width: 680px) {
