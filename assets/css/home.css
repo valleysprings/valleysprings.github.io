@@ -1,0 +1,497 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #2d3748;
+  --text-secondary: #4a5568;
+  --accent-color: #2f6f9f;
+  --accent-hover: #24577d;
+  --border-color: #e2e8f0;
+  --soft-bg: #f7fafc;
+  --shadow-color: rgba(15, 23, 42, 0.07);
+  --transition-time: 0.2s;
+}
+
+* {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 300;
+  line-height: 1.62;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-content {
+  flex: 1;
+  min-width: 0;
+}
+
+h1 {
+  margin: 0 0 0.25rem;
+  color: #1a202c;
+  font-size: 2.35rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.15;
+}
+
+.subtitle {
+  margin: 0.2rem 0 1rem;
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.header-image img {
+  width: 170px;
+  height: 190px;
+  object-fit: cover;
+  object-position: 42% 83%;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  box-shadow: 0 6px 18px var(--shadow-color);
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.social-links a,
+.toggle-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: rgba(47, 111, 159, 0.08);
+  color: var(--accent-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background var(--transition-time) ease, color var(--transition-time) ease, transform var(--transition-time) ease;
+}
+
+.social-links a:hover,
+.toggle-button:hover {
+  background: var(--accent-color);
+  color: #ffffff;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.page-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0 0 1.1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.94rem;
+}
+
+.page-nav a {
+  color: var(--text-secondary);
+}
+
+.page-nav a:hover {
+  color: var(--accent-color);
+}
+
+main {
+  width: 100%;
+}
+
+section {
+  width: 100%;
+  margin-bottom: 2rem;
+  scroll-margin-top: 1rem;
+}
+
+h2 {
+  margin: 1.6rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  color: #1a202c;
+  font-size: 1.38rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.25;
+}
+
+p {
+  margin: 0 0 0.85rem;
+  overflow-wrap: break-word;
+}
+
+ul {
+  margin-top: 0.4rem;
+  padding-left: 1.3rem;
+}
+
+li {
+  margin-bottom: 0.35rem;
+}
+
+.news-container {
+  max-height: 8.6rem;
+  overflow-y: visible;
+  padding-right: 0.5rem;
+}
+
+.news-container.is-expanded {
+  max-height: 18rem;
+  overflow-y: auto;
+}
+
+.news-list {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.news-list li {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
+  column-gap: 0.8rem;
+  align-items: start;
+  margin-bottom: 0.55rem;
+}
+
+.news-list li[hidden] {
+  display: none;
+}
+
+.news-container:not(.is-expanded) .news-list li:nth-child(n + 4) {
+  display: none;
+}
+
+.news-text {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.date,
+.entry-date,
+.award-year {
+  display: inline-block;
+  min-width: 8.5rem;
+  color: var(--text-secondary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.section-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.section-row h2 {
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
+.toggle-button {
+  border: 0;
+  cursor: pointer;
+}
+
+.publication-item {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  padding: 0.9rem 0;
+  transition: transform var(--transition-time) ease;
+}
+
+.publication-item:hover {
+  transform: translateX(3px);
+}
+
+.pub-year {
+  flex: 0 0 4rem;
+  color: var(--text-secondary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 700;
+}
+
+.pub-content {
+  flex: 1;
+}
+
+.pub-title-line {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.pub-title {
+  flex: 1;
+  color: #1a202c;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.pub-authors,
+.pub-venue,
+.pub-description {
+  margin-bottom: 0.3rem;
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+}
+
+.pub-venue {
+  font-style: italic;
+  text-align: right;
+}
+
+.highlight-name {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.pub-title-links {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 0.35rem;
+}
+
+.pub-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 4px;
+  background: var(--soft-bg);
+}
+
+.pub-icon-link svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  fill: currentColor;
+}
+
+.footnote {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.bio-education {
+  margin-top: 0.95rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+}
+
+.bio-education div {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 0.3rem;
+}
+
+.bio-education .bio-education-title {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: #1a202c;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.bio-education span {
+  flex: 0 0 6.7rem;
+  color: #3f4d61;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 600;
+}
+
+.entry,
+.award-item {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  transition: transform var(--transition-time) ease;
+}
+
+.entry:hover,
+.award-item:hover {
+  transform: translateX(3px);
+}
+
+.entry p {
+  margin: 0.2rem 0 0;
+  color: var(--text-secondary);
+}
+
+.entry strong {
+  font-weight: 700;
+}
+
+.internship-item {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.45rem;
+}
+
+.internship-date {
+  color: var(--text-secondary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.internship-item strong {
+  display: block;
+  font-weight: 700;
+}
+
+.internship-item p {
+  margin: 0.2rem 0 0;
+  color: var(--text-secondary);
+}
+
+footer {
+  margin-top: 2.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 680px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  body {
+    width: 100vw;
+    max-width: 100vw;
+    padding: 1rem;
+  }
+
+  .page-header,
+  main,
+  section,
+  p,
+  ul,
+  li,
+  .header-content {
+    max-width: 100%;
+  }
+
+  .subtitle,
+  .pub-authors,
+  .pub-description,
+  li {
+    overflow-wrap: anywhere;
+  }
+
+  .page-header {
+    align-items: flex-start;
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
+
+  .header-image img {
+    width: 160px;
+    height: 180px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .page-nav {
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    overflow-x: visible;
+    padding-bottom: 0.2rem;
+  }
+
+  .section-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .publication-item,
+  .entry,
+  .award-item {
+    display: block;
+  }
+
+  .internship-item {
+    display: block;
+  }
+
+  .publication-item:hover,
+  .entry:hover,
+  .award-item:hover {
+    transform: none;
+  }
+
+  .pub-year,
+  .entry-date,
+  .award-year {
+    display: block;
+    min-width: 0;
+    margin-bottom: 0.25rem;
+  }
+}
+
+@media print {
+  body {
+    max-width: none;
+    padding: 0;
+  }
+
+  .page-nav,
+  .toggle-button {
+    display: none;
+  }
+}
