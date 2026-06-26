@@ -318,6 +318,13 @@ li {
   font-size: 0.9rem;
 }
 
+.section-note {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  margin-left: auto;
+  text-align: right;
+}
+
 .bio-education {
   margin-top: 0.95rem;
   padding-top: 0.75rem;
