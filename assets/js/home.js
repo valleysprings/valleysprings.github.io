@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderNews(false);
   loadPublications();
+  document.addEventListener("click", revealLinkedPublication);
 });
 
 function loadPublications() {
@@ -52,9 +53,12 @@ function comparePublications(a, b) {
 }
 
 function togglePublications() {
-  showingSelected = !showingSelected;
-  renderPublications(showingSelected);
+  setPublicationMode(!showingSelected);
+}
 
+function setPublicationMode(selectedOnly) {
+  showingSelected = selectedOnly;
+  renderPublications(showingSelected);
   const toggleButton = document.getElementById("toggle-publications");
   const title = document.getElementById("publication-title");
   if (toggleButton) {
@@ -62,6 +66,25 @@ function togglePublications() {
   }
   if (title) {
     title.textContent = showingSelected ? "Selected Publications" : "All Publications";
+  }
+}
+
+function revealLinkedPublication(event) {
+  const link = event.target.closest("a[href^='#pub-']");
+  if (!link) return;
+
+  const targetId = link.getAttribute("href").slice(1);
+  const publicationExists = allPublications.some(
+    (publication) => `pub-${publication.id}` === targetId
+  );
+  if (document.getElementById(targetId) || !publicationExists) return;
+
+  event.preventDefault();
+  setPublicationMode(false);
+  const target = document.getElementById(targetId);
+  if (target) {
+    history.pushState(null, "", `#${targetId}`);
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 }
 
