@@ -1,5 +1,4 @@
 let allPublications = [];
-let allPreprints = [];
 let showingSelected = true;
 let showingAllNews = false;
 
@@ -16,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderNews(false);
   loadPublications();
-  loadPreprints();
 });
 
 function loadPublications() {
@@ -24,13 +22,6 @@ function loadPublications() {
   const data = source ? JSON.parse(source.textContent) : { publications: [] };
   allPublications = (data.publications || []).sort(comparePublications);
   renderPublications(true);
-}
-
-function loadPreprints() {
-  const source = document.getElementById("preprints-data");
-  const data = source ? JSON.parse(source.textContent) : { publications: [] };
-  allPreprints = (data.publications || []).sort(comparePublications);
-  renderPublicationList("preprints-container", allPreprints);
 }
 
 function toggleNews() {
@@ -45,7 +36,7 @@ function renderNews(showAll) {
 
   const items = [...container.querySelectorAll(".news-list li")];
   items.forEach((item, index) => {
-    item.hidden = showAll ? index >= 10 : index >= 3;
+    item.hidden = !showAll && index >= 3;
   });
 
   container.classList.toggle("is-expanded", showAll);
