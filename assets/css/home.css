@@ -383,6 +383,11 @@ li {
   font-weight: 700;
 }
 
+.teaching-courses {
+  display: grid;
+  gap: 0.55rem;
+}
+
 .internship-item {
   display: grid;
   grid-template-columns: 8.5rem minmax(0, 1fr);
