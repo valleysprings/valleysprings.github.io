@@ -383,6 +383,26 @@ li {
   font-weight: 700;
 }
 
+.service-subsection {
+  margin-bottom: 1.15rem;
+}
+
+.service-subsection:last-child {
+  margin-bottom: 0;
+}
+
+.service-subsection h3 {
+  margin: 0 0 0.45rem;
+  color: #1a202c;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.94rem;
+  font-weight: 600;
+}
+
+.service-subsection p {
+  margin-bottom: 0;
+}
+
 .teaching-courses {
   display: grid;
   gap: 0.55rem;
