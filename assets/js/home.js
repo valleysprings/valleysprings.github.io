@@ -95,10 +95,10 @@ function renderPublications(selectedOnly) {
   const publications = selectedOnly
     ? allPublications.filter((publication) => publication.selected)
     : allPublications;
-  renderPublicationList("publications-container", publications);
+  renderPublicationList("publications-container", publications, !selectedOnly);
 }
 
-function renderPublicationList(containerId, publications) {
+function renderPublicationList(containerId, publications, showLabels = false) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
@@ -107,11 +107,11 @@ function renderPublicationList(containerId, publications) {
   container.replaceChildren(...publications.map((publication) => {
     const shouldShowYear = publication.year !== lastYear;
     lastYear = publication.year;
-    return createPublicationElement(publication, shouldShowYear);
+    return createPublicationElement(publication, shouldShowYear, showLabels);
   }));
 }
 
-function createPublicationElement(publication, shouldShowYear) {
+function createPublicationElement(publication, shouldShowYear, showLabel = false) {
   const item = document.createElement("article");
   item.className = "publication-item";
   if (publication.id) {
@@ -130,7 +130,10 @@ function createPublicationElement(publication, shouldShowYear) {
 
   const title = document.createElement("div");
   title.className = "pub-title";
-  title.textContent = publication.title;
+  const publicationLabel = showLabel && publication.label
+    ? `[${publication.label}] `
+    : "";
+  title.textContent = `${publicationLabel}${publication.title}`;
   titleLine.appendChild(title);
 
   const titleLinks = createTitleLinks(publication.links || {});
