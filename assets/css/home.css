@@ -236,8 +236,10 @@ li {
 }
 
 .publication-item {
-  display: flex;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: 4rem 3rem minmax(0, 1fr);
+  column-gap: 0.75rem;
+  align-items: start;
   margin-bottom: 1.2rem;
   padding: 0.9rem 0;
   transition: transform var(--transition-time) ease;
@@ -248,14 +250,20 @@ li {
 }
 
 .pub-year {
-  flex: 0 0 4rem;
   color: var(--text-secondary);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-weight: 700;
 }
 
+.pub-index {
+  color: var(--text-secondary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
 .pub-content {
-  flex: 1;
+  min-width: 0;
 }
 
 .pub-title-line {
@@ -513,10 +521,14 @@ footer {
     margin-left: 0;
   }
 
-  .publication-item,
   .entry,
   .award-item {
     display: block;
+  }
+
+  .publication-item {
+    grid-template-columns: 3.4rem 2.8rem minmax(0, 1fr);
+    column-gap: 0.5rem;
   }
 
   .internship-item {
@@ -529,12 +541,17 @@ footer {
     transform: none;
   }
 
-  .pub-year,
   .entry-date,
   .award-year {
     display: block;
     min-width: 0;
     margin-bottom: 0.25rem;
+  }
+
+  .pub-year,
+  .pub-index {
+    min-width: 0;
+    font-size: 0.88rem;
   }
 }
 
