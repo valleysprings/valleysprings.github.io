@@ -95,10 +95,10 @@ function renderPublications(selectedOnly) {
   const publications = selectedOnly
     ? allPublications.filter((publication) => publication.selected)
     : allPublications;
-  renderPublicationList("publications-container", publications);
+  renderPublicationList("publications-container", publications, !selectedOnly);
 }
 
-function renderPublicationList(containerId, publications) {
+function renderPublicationList(containerId, publications, showIndex = false) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
@@ -107,13 +107,14 @@ function renderPublicationList(containerId, publications) {
   container.replaceChildren(...publications.map((publication) => {
     const shouldShowYear = publication.year !== lastYear;
     lastYear = publication.year;
-    return createPublicationElement(publication, shouldShowYear);
+    return createPublicationElement(publication, shouldShowYear, showIndex);
   }));
 }
 
-function createPublicationElement(publication, shouldShowYear) {
+function createPublicationElement(publication, shouldShowYear, showIndex = false) {
   const item = document.createElement("article");
   item.className = "publication-item";
+  item.classList.toggle("has-index", showIndex);
   if (publication.id) {
     item.id = `pub-${publication.id}`;
   }
@@ -121,10 +122,6 @@ function createPublicationElement(publication, shouldShowYear) {
   const year = document.createElement("div");
   year.className = "pub-year";
   year.textContent = shouldShowYear ? publication.year || "" : "";
-
-  const index = document.createElement("div");
-  index.className = "pub-index";
-  index.textContent = publication.label ? `[${publication.label}]` : "";
 
   const content = document.createElement("div");
   content.className = "pub-content";
@@ -164,7 +161,12 @@ function createPublicationElement(publication, shouldShowYear) {
   }
 
   item.appendChild(year);
-  item.appendChild(index);
+  if (showIndex) {
+    const index = document.createElement("div");
+    index.className = "pub-index";
+    index.textContent = publication.label ? `[${publication.label}]` : "";
+    item.appendChild(index);
+  }
   item.appendChild(content);
   return item;
 }
