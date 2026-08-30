@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-[Download my Chinese version CV here](https://valleysprings.github.io/files/chinese_CV.pdf)
+[Download my Chinese version CV here](https://valleysprings.github.io/files/jiawei_zhou_CV_zh.pdf)
 
 Education
 ======
