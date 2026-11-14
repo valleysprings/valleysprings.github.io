@@ -1,4 +1,5 @@
 let allPublications = [];
+let allPreprints = [];
 let showingSelected = true;
 let showingAllNews = false;
 
@@ -22,9 +23,9 @@ function loadPublications() {
   const source = document.getElementById("publications-data");
   const data = source ? JSON.parse(source.textContent) : { publications: [], preprints: [] };
   allPublications = (data.publications || []).sort(comparePublications);
-  const preprints = (data.preprints || []).sort(comparePublications);
+  allPreprints = (data.preprints || []).sort(comparePublications);
   renderPublications(true);
-  renderPublicationList("preprints-container", preprints, true);
+  renderPreprints(true);
 }
 
 function toggleNews() {
@@ -39,7 +40,7 @@ function renderNews(showAll) {
 
   const items = [...container.querySelectorAll(".news-list li")];
   items.forEach((item, index) => {
-    item.hidden = !showAll && index >= 3;
+    item.hidden = !showAll && index >= 7;
   });
 
   container.classList.toggle("is-expanded", showAll);
@@ -61,6 +62,7 @@ function togglePublications() {
 function setPublicationMode(selectedOnly) {
   showingSelected = selectedOnly;
   renderPublications(showingSelected);
+  renderPreprints(showingSelected);
   const toggleButton = document.getElementById("toggle-publications");
   const title = document.getElementById("publication-title");
   if (toggleButton) {
@@ -78,6 +80,8 @@ function revealLinkedPublication(event) {
   const targetId = link.getAttribute("href").slice(1);
   const publicationExists = allPublications.some(
     (publication) => `pub-${publication.id}` === targetId
+  ) || allPreprints.some(
+    (preprint) => `pub-${preprint.id}` === targetId
   );
   if (document.getElementById(targetId) || !publicationExists) return;
 
@@ -98,6 +102,16 @@ function renderPublications(selectedOnly) {
     ? allPublications.filter((publication) => publication.selected)
     : allPublications;
   renderPublicationList("publications-container", publications, !selectedOnly);
+}
+
+function renderPreprints(selectedOnly) {
+  const container = document.getElementById("preprints-container");
+  if (!container) return;
+
+  const preprints = selectedOnly
+    ? allPreprints.filter((preprint) => preprint.selected)
+    : allPreprints;
+  renderPublicationList("preprints-container", preprints, true);
 }
 
 function renderPublicationList(containerId, publications, showIndex = false) {

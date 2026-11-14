@@ -196,7 +196,7 @@ li {
   display: none;
 }
 
-.news-container:not(.is-expanded) .news-list li:nth-child(n + 4) {
+.news-container:not(.is-expanded) .news-list li:nth-child(n + 8) {
   display: none;
 }
 
