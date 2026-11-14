@@ -235,6 +235,22 @@ li {
   cursor: pointer;
 }
 
+.preprints-section {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.preprints-note {
+  margin: -0.5rem 0 0.75rem;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+[hidden] {
+  display: none !important;
+}
+
 .publication-item {
   display: grid;
   grid-template-columns: 4rem minmax(0, 1fr);

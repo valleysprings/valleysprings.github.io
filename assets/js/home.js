@@ -105,13 +105,16 @@ function renderPublications(selectedOnly) {
 }
 
 function renderPreprints(selectedOnly) {
+  const section = document.getElementById("preprints");
   const container = document.getElementById("preprints-container");
-  if (!container) return;
+  if (!section || !container) return;
 
-  const preprints = selectedOnly
-    ? allPreprints.filter((preprint) => preprint.selected)
-    : allPreprints;
-  renderPublicationList("preprints-container", preprints, true);
+  section.hidden = selectedOnly;
+  if (selectedOnly) {
+    container.replaceChildren();
+    return;
+  }
+  renderPublicationList("preprints-container", allPreprints, true);
 }
 
 function renderPublicationList(containerId, publications, showIndex = false) {
