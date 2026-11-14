@@ -463,6 +463,20 @@ footer {
   text-align: center;
 }
 
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem 1rem;
+  margin-bottom: 0.75rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.85rem;
+}
+
+.footer-links a {
+  color: var(--accent-color);
+}
+
 @media (max-width: 680px) {
   html,
   body {
