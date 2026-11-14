@@ -20,9 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function loadPublications() {
   const source = document.getElementById("publications-data");
-  const data = source ? JSON.parse(source.textContent) : { publications: [] };
+  const data = source ? JSON.parse(source.textContent) : { publications: [], preprints: [] };
   allPublications = (data.publications || []).sort(comparePublications);
+  const preprints = (data.preprints || []).sort(comparePublications);
   renderPublications(true);
+  renderPublicationList("preprints-container", preprints, true);
 }
 
 function toggleNews() {
