@@ -14,7 +14,7 @@
     <meta property="og:image" content="images/jiawei-zhou-macau.jpg">
     <title>David · 周家纬</title>
     <script>(()=>{let t;try{t=localStorage.getItem('theme')}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
-    <link rel="stylesheet" href="assets/css/home.css?v=20261115-3">
+    <link rel="stylesheet" href="assets/css/home.css?v=20261115-4">
   </head>
 
   <body id="top">
@@ -137,10 +137,13 @@
 
       <section id="publications">
         <div class="section-row">
-          <h2 id="publication-title">Selected Publications</h2>
+          <h2 id="publication-title">Publications</h2>
           <div class="publication-controls">
             <span class="section-note">* Equal contribution. † Co-corresponding authors.</span>
-            <button id="toggle-publications" class="toggle-button" type="button">Show All</button>
+            <div class="publication-view-switch" role="group" aria-label="Publication view">
+              <button class="view-button is-active" type="button" data-publication-view="core" aria-pressed="true">Core</button>
+              <button class="view-button" type="button" data-publication-view="full" aria-pressed="false">Full</button>
+            </div>
           </div>
         </div>
         <div id="publications-container" aria-live="polite">
@@ -148,14 +151,19 @@
             <p>JavaScript is disabled. Please see the CV PDF for the publication list.</p>
           </noscript>
         </div>
-      </section>
-
-      <section id="preprints" class="preprints-section" hidden>
-        <h2>Preprints &amp; Technical Reports</h2>
-        <div id="preprints-container" aria-live="polite">
-          <noscript>
-            <p>JavaScript is disabled. Please see the CV PDF for the publication list.</p>
-          </noscript>
+        <div id="full-publication-groups" hidden>
+          <section id="published" class="publication-group">
+            <h3>Published</h3>
+            <div id="published-container" aria-live="polite"></div>
+          </section>
+          <section id="arxiv" class="publication-group">
+            <h3>arXiv</h3>
+            <div id="arxiv-container" aria-live="polite"></div>
+          </section>
+          <section id="technical-reports" class="publication-group">
+            <h3>Technical Reports</h3>
+            <div id="technical-reports-container" aria-live="polite"></div>
+          </section>
         </div>
       </section>
 
@@ -379,6 +387,6 @@
         ]
       }
     </script>
-    <script src="assets/js/home.js?v=20261115-3"></script>
+    <script src="assets/js/home.js?v=20261115-4"></script>
   </body>
 </html>

@@ -6,10 +6,12 @@ let showingAllNews = false;
 document.addEventListener("DOMContentLoaded", () => {
   initializeTheme();
 
-  const toggleButton = document.getElementById("toggle-publications");
-  if (toggleButton) {
-    toggleButton.addEventListener("click", togglePublications);
-  }
+  const publicationViewButtons = document.querySelectorAll("[data-publication-view]");
+  publicationViewButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      setPublicationMode(button.getAttribute("data-publication-view") === "core");
+    });
+  });
 
   const toggleNewsButton = document.getElementById("toggle-news");
   if (toggleNewsButton) {
@@ -91,8 +93,7 @@ function loadPublications() {
   const data = source ? JSON.parse(source.textContent) : { publications: [], preprints: [] };
   allPublications = (data.publications || []).sort(comparePublications);
   allPreprints = (data.preprints || []).sort(comparePublications);
-  renderPublications(true);
-  renderPreprints(true);
+  setPublicationMode(true);
 }
 
 function toggleNews() {
@@ -122,21 +123,17 @@ function comparePublications(a, b) {
   return Number(b.order || 0) - Number(a.order || 0);
 }
 
-function togglePublications() {
-  setPublicationMode(!showingSelected);
-}
-
 function setPublicationMode(selectedOnly) {
   showingSelected = selectedOnly;
   renderPublications(showingSelected);
-  renderPreprints(showingSelected);
-  const toggleButton = document.getElementById("toggle-publications");
+  document.querySelectorAll("[data-publication-view]").forEach((button) => {
+    const isActive = (button.getAttribute("data-publication-view") === "core") === selectedOnly;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
   const title = document.getElementById("publication-title");
-  if (toggleButton) {
-    toggleButton.textContent = showingSelected ? "Show All" : "Show Selected";
-  }
   if (title) {
-    title.textContent = showingSelected ? "Selected Publications" : "All Publications";
+    title.textContent = "Publications";
   }
 }
 
@@ -162,26 +159,43 @@ function revealLinkedPublication(event) {
 }
 
 function renderPublications(selectedOnly) {
-  const container = document.getElementById("publications-container");
-  if (!container) return;
+  const coreContainer = document.getElementById("publications-container");
+  const fullGroups = document.getElementById("full-publication-groups");
+  if (!coreContainer || !fullGroups) return;
 
-  const publications = selectedOnly
-    ? allPublications.filter((publication) => publication.selected)
-    : allPublications;
-  renderPublicationList("publications-container", publications, !selectedOnly);
-}
+  const fullContainers = [
+    "published-container",
+    "arxiv-container",
+    "technical-reports-container"
+  ];
+  coreContainer.hidden = !selectedOnly;
+  fullGroups.hidden = selectedOnly;
 
-function renderPreprints(selectedOnly) {
-  const section = document.getElementById("preprints");
-  const container = document.getElementById("preprints-container");
-  if (!section || !container) return;
-
-  section.hidden = selectedOnly;
   if (selectedOnly) {
-    container.replaceChildren();
+    fullContainers.forEach((containerId) => {
+      const container = document.getElementById(containerId);
+      if (container) container.replaceChildren();
+    });
+    renderPublicationList(
+      "publications-container",
+      allPublications.filter((publication) => publication.selected),
+      false
+    );
     return;
   }
-  renderPublicationList("preprints-container", allPreprints, true);
+
+  coreContainer.replaceChildren();
+  renderPublicationList("published-container", allPublications, true);
+  renderPublicationList(
+    "arxiv-container",
+    allPreprints.filter((preprint) => (preprint.label || "").startsWith("C")),
+    true
+  );
+  renderPublicationList(
+    "technical-reports-container",
+    allPreprints.filter((preprint) => (preprint.label || "").startsWith("T")),
+    true
+  );
 }
 
 function renderPublicationList(containerId, publications, showIndex = false) {

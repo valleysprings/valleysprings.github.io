@@ -376,6 +376,56 @@ li {
   margin-left: auto;
 }
 
+.publication-view-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  padding: 0.2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--soft-bg);
+}
+
+.view-button {
+  flex: 1 1 auto;
+  padding: 0.3rem 0.7rem;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background var(--transition-time) ease, color var(--transition-time) ease;
+}
+
+.view-button:hover {
+  color: var(--accent-color);
+}
+
+.view-button.is-active {
+  background: var(--accent-color);
+  color: var(--bg-color);
+}
+
+.view-button:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.publication-group {
+  margin-top: 1.5rem;
+}
+
+.publication-group h3 {
+  margin: 0 0 0.75rem;
+  color: var(--text-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
 .bio-education {
   margin-top: 0.95rem;
   padding-top: 0.75rem;
