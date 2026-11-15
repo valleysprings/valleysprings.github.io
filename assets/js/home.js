@@ -72,14 +72,17 @@ function getSavedTheme() {
 
 function setTheme(theme) {
   document.documentElement.setAttribute("data-theme", theme);
+  updateThemeToggle(theme);
+}
+
+function updateThemeToggle(theme) {
   const themeToggle = document.getElementById("theme-toggle");
   if (!themeToggle) return;
 
   const nextTheme = theme === "dark" ? "light" : "dark";
   const action = `Switch to ${nextTheme} mode`;
-  themeToggle.textContent = nextTheme === "dark" ? "Dark" : "Light";
   themeToggle.setAttribute("aria-label", action);
-  themeToggle.setAttribute("aria-pressed", String(theme === "dark"));
+  themeToggle.setAttribute("aria-checked", String(theme === "dark"));
   themeToggle.title = action;
 }
 

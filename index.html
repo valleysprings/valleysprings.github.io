@@ -14,7 +14,7 @@
     <meta property="og:image" content="images/jiawei-zhou-macau.jpg">
     <title>David · 周家纬</title>
     <script>(()=>{let t;try{t=localStorage.getItem('theme')}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
-    <link rel="stylesheet" href="assets/css/home.css?v=20261115-1">
+    <link rel="stylesheet" href="assets/css/home.css?v=20261115-2">
   </head>
 
   <body id="top">
@@ -26,7 +26,9 @@
       <a href="#service">Service</a>
       <a href="#internship">Internship</a>
       <a href="#honors">Honors</a>
-      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark</button>
+      <button id="theme-toggle" class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Switch to dark mode" title="Switch to dark mode">
+        <span class="theme-toggle-track" aria-hidden="true"><span class="theme-toggle-thumb"></span></span>
+      </button>
     </nav>
 
     <header class="page-header">
@@ -360,6 +362,6 @@
         ]
       }
     </script>
-    <script src="assets/js/home.js?v=20261115-1"></script>
+    <script src="assets/js/home.js?v=20261115-2"></script>
   </body>
 </html>
