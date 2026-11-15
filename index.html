@@ -14,7 +14,7 @@
     <meta property="og:image" content="images/jiawei-zhou-macau.jpg">
     <title>David · 周家纬</title>
     <script>(()=>{let t;try{t=localStorage.getItem('theme')}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
-    <link rel="stylesheet" href="assets/css/home.css?v=20261115-4">
+    <link rel="stylesheet" href="assets/css/home.css?v=20261115-6">
   </head>
 
   <body id="top">
@@ -141,17 +141,19 @@
           <div class="publication-controls">
             <span class="section-note">* Equal contribution. † Co-corresponding authors.</span>
             <div class="publication-view-switch" role="group" aria-label="Publication view">
-              <button class="view-button is-active" type="button" data-publication-view="core" aria-pressed="true">Core</button>
+              <button class="view-button is-active" type="button" data-publication-view="published" aria-pressed="true">Published</button>
+              <button class="view-button" type="button" data-publication-view="arxiv" aria-pressed="false">arXiv</button>
+              <button class="view-button" type="button" data-publication-view="technical-reports" aria-pressed="false">Technical Reports</button>
               <button class="view-button" type="button" data-publication-view="full" aria-pressed="false">Full</button>
             </div>
           </div>
         </div>
-        <div id="publications-container" aria-live="polite">
+        <div id="publications-container" aria-live="polite" hidden>
           <noscript>
             <p>JavaScript is disabled. Please see the CV PDF for the publication list.</p>
           </noscript>
         </div>
-        <div id="full-publication-groups" hidden>
+        <div id="full-publication-groups">
           <section id="published" class="publication-group">
             <h3>Published</h3>
             <div id="published-container" aria-live="polite"></div>
@@ -387,6 +389,6 @@
         ]
       }
     </script>
-    <script src="assets/js/home.js?v=20261115-4"></script>
+    <script src="assets/js/home.js?v=20261115-6"></script>
   </body>
 </html>

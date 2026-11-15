@@ -1,6 +1,6 @@
 let allPublications = [];
 let allPreprints = [];
-let showingSelected = true;
+let currentPublicationView = "published";
 let showingAllNews = false;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const publicationViewButtons = document.querySelectorAll("[data-publication-view]");
   publicationViewButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      setPublicationMode(button.getAttribute("data-publication-view") === "core");
+      setPublicationView(button.getAttribute("data-publication-view"));
     });
   });
 
@@ -93,7 +93,7 @@ function loadPublications() {
   const data = source ? JSON.parse(source.textContent) : { publications: [], preprints: [] };
   allPublications = (data.publications || []).sort(comparePublications);
   allPreprints = (data.preprints || []).sort(comparePublications);
-  setPublicationMode(true);
+  setPublicationView("published");
 }
 
 function toggleNews() {
@@ -123,11 +123,11 @@ function comparePublications(a, b) {
   return Number(b.order || 0) - Number(a.order || 0);
 }
 
-function setPublicationMode(selectedOnly) {
-  showingSelected = selectedOnly;
-  renderPublications(showingSelected);
+function setPublicationView(view) {
+  currentPublicationView = view;
+  renderPublications(view);
   document.querySelectorAll("[data-publication-view]").forEach((button) => {
-    const isActive = (button.getAttribute("data-publication-view") === "core") === selectedOnly;
+    const isActive = button.getAttribute("data-publication-view") === view;
     button.classList.toggle("is-active", isActive);
     button.setAttribute("aria-pressed", String(isActive));
   });
@@ -142,15 +142,22 @@ function revealLinkedPublication(event) {
   if (!link) return;
 
   const targetId = link.getAttribute("href").slice(1);
-  const publicationExists = allPublications.some(
-    (publication) => `pub-${publication.id}` === targetId
-  ) || allPreprints.some(
-    (preprint) => `pub-${preprint.id}` === targetId
-  );
-  if (document.getElementById(targetId) || !publicationExists) return;
+  if (document.getElementById(targetId)) return;
+
+  const publication = allPublications.find((item) => `pub-${item.id}` === targetId);
+  const preprint = allPreprints.find((item) => `pub-${item.id}` === targetId);
+  if (!publication && !preprint) return;
+
+  let view = "published";
+  if (preprint) {
+    const label = preprint.label || "";
+    view = label.startsWith("C")
+      ? "arxiv"
+      : label.startsWith("T") ? "technical-reports" : "full";
+  }
 
   event.preventDefault();
-  setPublicationMode(false);
+  setPublicationView(view);
   const target = document.getElementById(targetId);
   if (target) {
     history.pushState(null, "", `#${targetId}`);
@@ -158,44 +165,39 @@ function revealLinkedPublication(event) {
   }
 }
 
-function renderPublications(selectedOnly) {
-  const coreContainer = document.getElementById("publications-container");
-  const fullGroups = document.getElementById("full-publication-groups");
-  if (!coreContainer || !fullGroups) return;
+function renderPublications(view) {
+  const fullContainer = document.getElementById("publications-container");
+  const groupsWrapper = document.getElementById("full-publication-groups");
+  if (!fullContainer || !groupsWrapper) return;
 
-  const fullContainers = [
-    "published-container",
-    "arxiv-container",
-    "technical-reports-container"
-  ];
-  coreContainer.hidden = !selectedOnly;
-  fullGroups.hidden = selectedOnly;
+  const groupNames = ["published", "arxiv", "technical-reports"];
+  fullContainer.hidden = view !== "full";
+  groupsWrapper.hidden = view === "full";
 
-  if (selectedOnly) {
-    fullContainers.forEach((containerId) => {
-      const container = document.getElementById(containerId);
-      if (container) container.replaceChildren();
-    });
+  groupNames.forEach((groupName) => {
+    const group = document.getElementById(groupName);
+    const container = document.getElementById(`${groupName}-container`);
+    const isActive = view === groupName;
+    if (group) group.hidden = !isActive;
+    if (container && !isActive) container.replaceChildren();
+  });
+
+  if (view === "full") {
     renderPublicationList(
       "publications-container",
-      allPublications.filter((publication) => publication.selected),
-      false
+      [...allPublications, ...allPreprints].sort(comparePublications),
+      true
     );
     return;
   }
 
-  coreContainer.replaceChildren();
-  renderPublicationList("published-container", allPublications, true);
-  renderPublicationList(
-    "arxiv-container",
-    allPreprints.filter((preprint) => (preprint.label || "").startsWith("C")),
-    true
-  );
-  renderPublicationList(
-    "technical-reports-container",
-    allPreprints.filter((preprint) => (preprint.label || "").startsWith("T")),
-    true
-  );
+  fullContainer.replaceChildren();
+  const publications = view === "published"
+    ? allPublications
+    : view === "arxiv"
+      ? allPreprints.filter((preprint) => (preprint.label || "").startsWith("C"))
+      : allPreprints.filter((preprint) => (preprint.label || "").startsWith("T"));
+  renderPublicationList(`${view}-container`, publications, true);
 }
 
 function renderPublicationList(containerId, publications, showIndex = false) {
