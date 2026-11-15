@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
     <meta name="description" content="Academic homepage of Jiawei Zhou, first-year Ph.D. student in Computer Science and Technology at Fudan University.">
     <meta name="keywords" content="Jiawei Zhou, self-evolving agents, agentic RAG, activation steering, post-training, continual learning">
     <meta name="author" content="Jiawei Zhou">
@@ -12,7 +13,8 @@
     <meta property="og:url" content="https://valleysprings.github.io/">
     <meta property="og:image" content="images/jiawei-zhou-macau.jpg">
     <title>David · 周家纬</title>
-    <link rel="stylesheet" href="assets/css/home.css?v=20261114-4">
+    <script>(()=>{let t;try{t=localStorage.getItem('theme')}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()</script>
+    <link rel="stylesheet" href="assets/css/home.css?v=20261115-1">
   </head>
 
   <body id="top">
@@ -24,6 +26,7 @@
       <a href="#service">Service</a>
       <a href="#internship">Internship</a>
       <a href="#honors">Honors</a>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark</button>
     </nav>
 
     <header class="page-header">
@@ -357,6 +360,6 @@
         ]
       }
     </script>
-    <script src="assets/js/home.js?v=20261114-3"></script>
+    <script src="assets/js/home.js?v=20261115-1"></script>
   </body>
 </html>

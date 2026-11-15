@@ -1,4 +1,5 @@
 :root {
+  color-scheme: light;
   --bg-color: #ffffff;
   --text-color: #2d3748;
   --text-secondary: #4a5568;
@@ -8,6 +9,18 @@
   --soft-bg: #f7fafc;
   --shadow-color: rgba(15, 23, 42, 0.07);
   --transition-time: 0.2s;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-color: #0f172a;
+  --text-color: #e2e8f0;
+  --text-secondary: #a5b4c8;
+  --accent-color: #8fc7f5;
+  --accent-hover: #bfdfff;
+  --border-color: #334155;
+  --soft-bg: #1e293b;
+  --shadow-color: rgba(0, 0, 0, 0.35);
 }
 
 * {
@@ -484,6 +497,57 @@ footer {
 
 .footer-links a {
   color: var(--accent-color);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--soft-bg);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background var(--transition-time) ease, color var(--transition-time) ease, border-color var(--transition-time) ease, transform var(--transition-time) ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent-color);
+  background: var(--accent-color);
+  color: var(--bg-color);
+  transform: translateY(-1px);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+}
+
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] .pub-title,
+html[data-theme="dark"] .bio-education .bio-education-title,
+html[data-theme="dark"] .service-subsection h3 {
+  color: var(--text-color);
+}
+
+html[data-theme="dark"] .bio-education span {
+  color: var(--text-color);
+}
+
+html[data-theme="dark"] .social-links a,
+html[data-theme="dark"] .toggle-button {
+  background: var(--soft-bg);
+}
+
+html[data-theme="dark"] .social-links a:hover,
+html[data-theme="dark"] .toggle-button:hover {
+  color: var(--bg-color);
 }
 
 @media (max-width: 680px) {

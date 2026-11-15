@@ -4,6 +4,8 @@ let showingSelected = true;
 let showingAllNews = false;
 
 document.addEventListener("DOMContentLoaded", () => {
+  initializeTheme();
+
   const toggleButton = document.getElementById("toggle-publications");
   if (toggleButton) {
     toggleButton.addEventListener("click", togglePublications);
@@ -18,6 +20,68 @@ document.addEventListener("DOMContentLoaded", () => {
   loadPublications();
   document.addEventListener("click", revealLinkedPublication);
 });
+
+function initializeTheme() {
+  const root = document.documentElement;
+  const mediaQuery = window.matchMedia
+    ? window.matchMedia("(prefers-color-scheme: dark)")
+    : null;
+  const savedTheme = getSavedTheme();
+  const rootTheme = root.getAttribute("data-theme");
+  const initialTheme = rootTheme === "dark" || rootTheme === "light"
+    ? rootTheme
+    : savedTheme === "dark" || savedTheme === "light"
+      ? savedTheme
+      : mediaQuery && mediaQuery.matches ? "dark" : "light";
+
+  setTheme(initialTheme);
+
+  const themeToggle = document.getElementById("theme-toggle");
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      setTheme(nextTheme);
+      try {
+        localStorage.setItem("theme", nextTheme);
+      } catch {
+        return;
+      }
+    });
+  }
+
+  if (!mediaQuery) return;
+  const followSystemTheme = (event) => {
+    const savedTheme = getSavedTheme();
+    if (savedTheme === "dark" || savedTheme === "light") return;
+    setTheme(event.matches ? "dark" : "light");
+  };
+  if (typeof mediaQuery.addEventListener === "function") {
+    mediaQuery.addEventListener("change", followSystemTheme);
+  } else if (typeof mediaQuery.addListener === "function") {
+    mediaQuery.addListener(followSystemTheme);
+  }
+}
+
+function getSavedTheme() {
+  try {
+    return localStorage.getItem("theme");
+  } catch {
+    return null;
+  }
+}
+
+function setTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  const themeToggle = document.getElementById("theme-toggle");
+  if (!themeToggle) return;
+
+  const nextTheme = theme === "dark" ? "light" : "dark";
+  const action = `Switch to ${nextTheme} mode`;
+  themeToggle.textContent = nextTheme === "dark" ? "Dark" : "Light";
+  themeToggle.setAttribute("aria-label", action);
+  themeToggle.setAttribute("aria-pressed", String(theme === "dark"));
+  themeToggle.title = action;
+}
 
 function loadPublications() {
   const source = document.getElementById("publications-data");
