@@ -129,6 +129,7 @@ h1 {
 .page-nav {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   gap: 1rem;
   margin: 0 0 1.1rem;
@@ -500,23 +501,33 @@ footer {
 }
 
 .theme-toggle {
+  position: relative;
   display: inline-flex;
   align-items: center;
+  align-self: center;
   justify-content: center;
-  width: 48px;
-  height: 34px;
-  padding: 6px 4px;
+  width: 44px;
+  height: 24px;
+  padding: 0;
   border: 0;
   border-radius: 999px;
   background: transparent;
+  vertical-align: middle;
   cursor: pointer;
+}
+
+.theme-toggle::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 999px;
 }
 
 .theme-toggle-track {
   position: relative;
   display: block;
-  width: 40px;
-  height: 22px;
+  width: 44px;
+  height: 24px;
   border: 1px solid var(--border-color);
   border-radius: 999px;
   background: var(--soft-bg);
@@ -528,12 +539,33 @@ footer {
   position: absolute;
   top: 2px;
   left: 2px;
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: #f7fafc;
   box-shadow: 0 1px 3px var(--shadow-color);
-  transition: transform var(--transition-time) ease;
+  transition: transform var(--transition-time) ease, background var(--transition-time) ease;
+}
+
+.theme-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 12px;
+  height: 12px;
+  transform: translate(-50%, -50%);
+  transition: opacity var(--transition-time) ease;
+}
+
+.theme-icon-sun {
+  color: #b45309;
+  opacity: 1;
+}
+
+.theme-icon-moon {
+  color: #f7fafc;
+  opacity: 0;
 }
 
 html[data-theme="dark"] .theme-toggle-track {
@@ -542,7 +574,16 @@ html[data-theme="dark"] .theme-toggle-track {
 }
 
 html[data-theme="dark"] .theme-toggle-thumb {
-  transform: translateX(18px);
+  background: var(--bg-color);
+  transform: translateX(20px);
+}
+
+html[data-theme="dark"] .theme-icon-sun {
+  opacity: 0;
+}
+
+html[data-theme="dark"] .theme-icon-moon {
+  opacity: 1;
 }
 
 .theme-toggle:hover .theme-toggle-track {
